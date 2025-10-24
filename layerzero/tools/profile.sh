@@ -21,7 +21,7 @@ view_profile() {
     sed -E 's/(Contract|Function): //g'
 }
 
-snforge test \
+scarb test \
   --release \
   --features gas_profile \
   --build-profile \

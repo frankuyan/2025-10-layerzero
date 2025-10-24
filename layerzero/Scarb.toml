@@ -1,0 +1,38 @@
+[package]
+name = "layerzero"
+version = "0.1.0"
+edition = "2024_07"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[features]
+gas_profile = []
+
+[dependencies]
+starknet = "2.12.0"
+starkware_utils = { git = "https://github.com/starkware-libs/starkware-starknet-utils", rev = "8a5af9509d93815542b8a701cee22a1b9ec1fe34" }
+openzeppelin = "2.0.0"
+alexandria_bytes = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "d45439ca26fe890f636c9b06492d075add3fcb29" }
+lz_utils = { path = "../libs/lz_utils" }
+enumerable_set = { path = "../libs/enumerable_set" }
+multisig = { path = "../libs/multisig" }
+
+[dev-dependencies]
+snforge_std = "0.48.0"
+assert_macros = "2.12.0"
+starkware_utils_testing = { git = "https://github.com/starkware-libs/starkware-starknet-utils", rev = "8a5af9509d93815542b8a701cee22a1b9ec1fe34" }
+
+[lib]
+
+[[target.starknet-contract]]
+sierra = true
+casm = true
+
+[scripts]
+test = "snforge test"
+
+[tool.scarb]
+allow-prebuilt-plugins = ["snforge_scarb_plugin", "snforge_std"]
+
+[profile.dev.cairo]
+unstable-add-statements-functions-debug-info = true

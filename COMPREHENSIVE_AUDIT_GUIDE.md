@@ -2325,6 +2325,8 @@ contract MaliciousReceiver {
     }
 }
 
+
+
 // Result:
 // - Message verified and paid for
 // - But can never be executed
